@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Category
+{% endblock %}
+
+{% block content %}
+<h1 class='display-1'>Categories Table</h1>
+
+<div class="d-flex justify-content-between align-items-center">
+    <h2 class="display-2 mb-0">Categories:</h2>
+    <a href="{{url_for('add_product', category_id = category.id)}}" class='btn btn-success'>
+        Add <i class="fas fa-plus"></i>
+    </a>
+</div>
+
+<table class="table mt-3">
+    <thead>
+        <tr> 
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th> # of Products</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+        <tr> 
+            <td>{{category.id}}</td>
+            <td>{{category.name}}</td>
+            <td>{{category.products|length}}</td><!-- Its coming from the Category table of relationship attributes in models.py-->
+            <td>
+                <a href="{{url_for('show_category', id=category.id)}}" class='btn btn-primary'>Show <i class="fas fa-eye"></i></a>
+                <a href="{{url_for('edit_category', id=category.id)}}" class='btn btn-warning'>Edit <i class="fas fa-edit"></i></a>
+                <a href="{{url_for('delete_category', id=category.id)}}" class='btn btn-danger'>Delete <i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

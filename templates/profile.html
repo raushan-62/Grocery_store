@@ -6,36 +6,32 @@
 
 
 {% block content %}
-<div class="profile-container">
-    <div class="profile-header">
+<div class="container mt-5">
+    <div class="card p-4">
+        <h3 class="display-1" style = "font-weight: bold; color:darkgreen">Profile</h3>
+            <img src='https://api.dicebear.com/6.x/lorelei/svg?seed={{ user.username }}' class="rounded-circle" width='100px' height='100px' style="margin: 10px; position: absolute;top: .2px; right: 2px;">
         <h1>
-            Hello <span>@{{ user.name }}</span>
+        <a href="{{ url_for('logout') }}" class="btn btn-outline-danger w-100 mb-3">Logout</a>
         </h1>
+        <form action="" method="POST" class="mt-4">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your current password" required>
+            </div>
+            <div class="mb-3">
+                <label for="new_password" class="form-label">New Password:</label>
+                <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Enter your new password" required>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Update Profile</button>
+        </form>
     </div>
-    <div class="profile-header">
-        <h1>
-            <img src = 'https://api.dicebear.com/6.x/lorelei/svg?seed={{ user.username }}' width = '100px' height = '100px' margin = '10px' top = '10px' right = '10px' postion = 'absolute'>
-        </h1>
-    </div>
-    <a href="{{ url_for('logout') }}" class="btn btn-outline-danger w-100">Logout</a>
-    <form action="" method="POST" class="mt-4">
-        <div class="mb-3">
-            <label for="username" class="form-label">Username:</label>
-            <input type="text" class="form-control" id="username" name="username"  placeholder="Enter your username" required>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Current password" required>
-        </div>
-        <div class="mb-3">
-            <label for = "new_password" class="form-label">New Password:</label>
-            <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Enter your new password" required>
-        </div>
-        <div class="mb-3">
-            <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Update Profile</button>
-    </form>
 </div>
 {% endblock %}
